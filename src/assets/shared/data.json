@@ -86,12 +86,12 @@
       "name": "Rembrandt"
     },
     "images": {
-      "thumbnail": "./src/assets/storm-on-the-sea-of-galilee/thumbnail.jpg",
+      "thumbnail": "./src/assets/the-storm-on-the-sea-of-galilee/thumbnail.jpg",
       "hero": {
-        "small": "./src/assets/storm-on-the-sea-of-galilee/hero-small.jpg",
-        "large": "./src/assets/storm-on-the-sea-of-galilee/hero-large.jpg"
+        "small": "./src/assets/the-storm-on-the-sea-of-galilee/hero-small.jpg",
+        "large": "./src/assets/the-storm-on-the-sea-of-galilee/hero-large.jpg"
       },
-      "gallery": "./src/assets/storm-on-the-sea-of-galilee/gallery.jpg"
+      "gallery": "./src/assets/the-storm-on-the-sea-of-galilee/gallery.jpg"
     }
   },
   {
