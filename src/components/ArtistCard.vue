@@ -1,12 +1,14 @@
 <template>
-  <div class="card">
-      <a href="#">
+  <div class="card" @click="$emit('artist-view', painting.id)">
+    
+      <router-link to="/artist">
         <picture>
           <source :srcset="`${painting.images.gallery}`"
               media="(min-width: 768px)">
           <img :src="`${painting.images.thumbnail}`" alt="">
         </picture>
-      </a>
+      </router-link>
+     
       <h2>{{painting.name}}</h2>
       <h3>{{painting.artist.name}}</h3>
   </div>

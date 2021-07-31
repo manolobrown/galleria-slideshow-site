@@ -1,6 +1,6 @@
 <template>
   <BaseHeader />
-  <ArtistCards :paintings="paintings" />
+  <router-view></router-view>
 </template>
 <script>
 
@@ -19,22 +19,11 @@
 
 
 import BaseHeader from './components/BaseHeader.vue'
-import json from './assets/shared/data.json'
-import ArtistCards from './components/ArtistCards.vue'
 
 export default {
   name:'App',
   components: {
-    BaseHeader,
-    ArtistCards
-  },
-  data() {
-    return {
-      paintings: [],
-    }
-  },
-  created() {
-    this.paintings = json
+    BaseHeader
   }
 }
 
