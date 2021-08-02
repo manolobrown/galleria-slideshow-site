@@ -1,8 +1,6 @@
 <template>
     <div :key="painting.id" v-for="painting in paintings">
-        <ArtistCard 
-        @artist-view="$emit('artist-view', painting.id)"
-        :painting="painting" />
+        <ArtistCard :painting="painting" />
     </div>
 </template>
 
@@ -15,8 +13,7 @@ export default {
     },
     props: {
         paintings: Array
-    },
-    emits: ['artist-view'],
+    }
 }
 </script>
 

@@ -1,29 +1,31 @@
 <template>
-    <ArtistCards 
-  @artist-view="artistView"
-  :paintings="paintings" />
+    <ArtistCards :paintings="paintings" />
 </template>
 
 <script>
 import ArtistCards from '../components/ArtistCards.vue'
-import json from '../assets/shared/data.json'
+
 export default {
     name:'Home',
     components: {
         ArtistCards
     },
     data() {
-    return {
-      paintings: [],
+      return {
+        paintings: [],
+      }
+    },
+    methods: {
+      async fetchArtists() {
+        const res = await fetch('http://localhost:5000/paintings')
+
+        const data = await res.json()
+
+        return data
+      }
+    },
+    async created() {
+      this.paintings = await this.fetchArtists()
     }
-  },
-  methods: {
-    artistView(id) {
-      console.log(id)
-    }
-  },
-  created() {
-    this.paintings = json
-  }
 }
 </script>

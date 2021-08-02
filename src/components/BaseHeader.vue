@@ -1,6 +1,8 @@
 <template>
   <header>
-    <img alt="Vue logo" src="../assets/shared/logo.svg" />
+    <router-link :to="`/`">
+      <img alt="Vue logo" src="../assets/shared/logo.svg" />
+    </router-link>
     <BaseButton txt="Start Slideshow" />
   </header>
 </template>
