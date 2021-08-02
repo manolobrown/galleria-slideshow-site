@@ -6,6 +6,7 @@
 
 <script>
 import ArtistCard from './ArtistCard.vue'
+
 export default {
     name: 'ArtistCards',
     components: {

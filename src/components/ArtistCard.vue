@@ -3,9 +3,9 @@
 
       <router-link :to="{ name: 'ArtistDetails', params: { id: painting.id } }">
         <picture>
-          <source :srcset="`${painting.images.thumbnail}`"
+          <source :srcset="painting.images.thumbnail"
               media="(min-width: 768px)">
-          <img :src="`${painting.images.thumbnail}`" alt="">
+          <img :src="painting.images.thumbnail" alt="">
         </picture>
       </router-link>
 
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+
 
 export default {
     name:'ArtistCard',
