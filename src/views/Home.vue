@@ -1,5 +1,7 @@
 <template>
+  <main class="main">
     <ArtistCards :paintings="paintings" />
+  </main> 
 </template>
 
 <script>

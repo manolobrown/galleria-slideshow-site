@@ -33,13 +33,45 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  @use "sass:math";
+  @function rem($pixels, $context: 16) {
+    @return (math.div($pixels, $context)) * 1rem;
+  }
 
-}
+  :root {
+    --black: hsl(0,0%,0%);
+    --darkGray: hsl(0,0%,3%);
+    --lightGray: hsl(0,0%,90%);
+    --gray: hsl(0,0%,95%);
+    --white: hsl(0,0%,100%);
+
+    --baskerville: 'Libre Baskerville', serif; font-display: swap;
+  }
+
+  html {
+      font-size: 100%;
+      box-sizing: border-box;
+  }
+
+  *,*::before,*::after {
+      box-sizing: inherit;
+  }
+
+  body {
+      margin:0;
+      padding:0;
+      font-family: var(--baskerville);
+  }
+  h1,h2,h3,h4,h5,h6 {
+      margin-top: 0;
+  }
+
+  a,a:visited,a:active {
+      text-decoration: none;
+  }
+  
+  .main{
+    margin: 0 auto;
+    padding: 0 rem(24);
+  }
 </style>
