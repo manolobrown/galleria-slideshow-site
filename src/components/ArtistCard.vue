@@ -35,7 +35,7 @@ export default {
   }
   .card {
     position: relative;
-    margin-block: rem(24);
+    margin-bottom: rem(24);
 
     img {
         display: block;
