@@ -70,8 +70,13 @@ export default {
       text-decoration: none;
   }
   
-  .main{
+  .main, .hero {
     margin: 0 auto;
     padding: 0 rem(24);
+  }
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
   }
 </style>
