@@ -3,80 +3,107 @@
   <router-view></router-view>
 </template>
 <script>
-
 //TODO Components Needed
-  //header - has logo and button
-  //button - start slideshow | stop slideshow | go to source | view image | close
-  //card - main page | detail page
-  //card thumb - detail
-  //title - titles + author 
-  //progress bar - detail page
-  //slider controls - prev | next
-  //modal
+//header - has logo and button
+//button - start slideshow | stop slideshow | go to source | view image | close
+//card - main page | detail page
+//card thumb - detail
+//title - titles + author
+//progress bar - detail page
+//slider controls - prev | next
+//modal
 
 //TODO Routes Needed
-  //Detail Page
+//Detail Page
 
-
-import BaseHeader from './components/BaseHeader.vue'
+import BaseHeader from "./components/BaseHeader.vue";
 
 export default {
-  name:'App',
+  name: "App",
   components: {
-    BaseHeader
-  }
-}
-
+    BaseHeader,
+  },
+};
 
 // This starter template is using Vue 3 experimental <script setup> SFCs
 // Check out https://github.com/vuejs/rfcs/blob/master/active-rfcs/0040-script-setup.md
 </script>
 
 <style lang="scss">
-  @use "sass:math";
-  @function rem($pixels, $context: 16) {
-    @return (math.div($pixels, $context)) * 1rem;
-  }
+@use "sass:math";
+@function rem($pixels, $context: 16) {
+  @return (math.div($pixels, $context)) * 1rem;
+}
 
-  :root {
-    --black: hsl(0,0%,0%);
-    --darkGray: hsl(0,0%,3%);
-    --lightGray: hsl(0,0%,90%);
-    --gray: hsl(0,0%,95%);
-    --white: hsl(0,0%,100%);
+:root {
+  --black: hsl(0, 0%, 0%);
+  --darkGray: hsl(0, 0%, 3%);
+  --lightGray: hsl(0, 0%, 90%);
+  --gray: hsl(0, 0%, 95%);
+  --white: hsl(0, 0%, 100%);
 
-    --baskerville: 'Libre Baskerville', serif; font-display: swap;
-  }
+  --baskerville: "Libre Baskerville", serif;
+  font-display: swap;
+}
 
-  html {
-      font-size: 100%;
-      box-sizing: border-box;
-  }
+html {
+  font-size: 100%;
+  box-sizing: border-box;
+}
 
-  *,*::before,*::after {
-      box-sizing: inherit;
-  }
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
 
-  body {
-      margin:0;
-      padding:0;
-      font-family: var(--baskerville);
-  }
-  h1,h2,h3,h4,h5,h6 {
-      margin-top: 0;
-  }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--baskerville);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+}
 
-  a,a:visited,a:active {
-      text-decoration: none;
+a,
+a:visited,
+a:active {
+  text-decoration: none;
+}
+
+.main,
+.hero {
+  margin: 0 auto;
+  padding: 0 rem(24);
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.wrapper,
+header {
+  max-width: rem(1360);
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (min-width: rem(768)) {
+  .main,
+  .hero {
+    padding: 0 rem(40);
   }
-  
-  .main, .hero {
-    margin: 0 auto;
-    padding: 0 rem(24);
+}
+@media (min-width: rem(1440)) {
+  .main,
+  .hero {
+    margin: 0;
+    padding: 0;
   }
-  img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-  }
+}
 </style>
