@@ -21,7 +21,11 @@
         </div>
       </div>
       <!-- hero button -->
-      <BaseButton class="btn btn--hero" txt="View Image" />
+      <BaseButton
+        @click="$refs.modalName.openModal()"
+        class="btn btn--hero"
+        txt="View Image"
+      />
     </div>
 
     <!-- body -->
@@ -35,7 +39,8 @@
         Go To Source
       </a>
     </main>
-
+  </div>
+  <footer class="footer" v-if="painting">
     <!-- progress bar -->
     <div class="progress"></div>
     <!-- pagination -->
@@ -55,16 +60,25 @@
         </div>
       </div>
     </div>
-  </div>
+  </footer>
+
+  <modal ref="modalName">
+    <template v-slot:body>
+      <img :src="painting.images.gallery" alt="" />
+    </template>
+  </modal>
 </template>
 
 <script>
 import BaseButton from "../components/BaseButton.vue";
+import Modal from "../components/Modal.vue";
+import Pagination from "../components/Pagination.vue";
 
 export default {
   name: "ArtistDetails",
   components: {
     BaseButton,
+    Modal,
   },
   props: ["id"],
   data() {
@@ -91,6 +105,10 @@ export default {
 @use "sass:math";
 @function rem($pixels, $context: 16) {
   @return (math.div($pixels, $context)) * 1rem;
+}
+
+.wrapper {
+  min-height: 75vh;
 }
 
 .hero {
@@ -139,6 +157,10 @@ export default {
     background-repeat: no-repeat;
     background-size: contain;
   }
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+  }
 }
 
 .artist-image {
@@ -178,7 +200,7 @@ p {
   letter-spacing: rem(2);
 
   &:hover {
-    text-decoration: none;
+    color: #000;
   }
 }
 
@@ -186,6 +208,7 @@ p {
   background-color: #e5e5e5;
   height: rem(1);
   flex: 0 0 100%;
+  margin-block-end: rem(10);
 }
 
 .pagination {
@@ -229,6 +252,8 @@ p {
   .wrapper {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
   }
   .hero {
     flex: 0 0 100%;
@@ -312,6 +337,30 @@ p {
     .next {
       margin-left: rem(40);
     }
+  }
+}
+@media (min-width: rem(1440)) {
+  .main {
+    max-width: rem(476);
+  }
+  .hero .heading-group {
+    right: rem(-95);
+    h2 {
+      width: 9ch;
+    }
+  }
+  .artist-image {
+    top: rem(496);
+    right: rem(230);
+  }
+  .year {
+    margin-block-end: rem(-40);
+  }
+  p,
+  .btn--link {
+    max-width: rem(350);
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 </style>

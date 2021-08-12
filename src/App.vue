@@ -46,6 +46,10 @@ export default {
   font-display: swap;
 }
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
 html {
   font-size: 100%;
   box-sizing: border-box;
@@ -88,10 +92,17 @@ img {
   height: auto;
 }
 .wrapper,
-header {
+header,
+.pagination {
   max-width: rem(1360);
   margin-left: auto;
   margin-right: auto;
+}
+.btn,
+.controls > div,
+button {
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 @media (min-width: rem(768)) {
   .main,
