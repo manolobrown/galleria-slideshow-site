@@ -5,8 +5,7 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "backend": "json-server --watch src/assets/shared/data.json --port 5000",
-    "production": "npm run backend & npm run build"
+    "backend": "json-server --watch src/assets/shared/data.json --port 5000"
   },
   "dependencies": {
     "json-server": "^0.16.3",
