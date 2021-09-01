@@ -1,24 +1,45 @@
-import { createRouter, createWebHistory } from "vue-router"
-import Home from '../views/Home.vue'
-import ArtistDetails from '../views/ArtistDetails.vue'
+import { createRouter, createWebHistory, useRoute } from "vue-router";
+import Home from "../views/Home.vue";
+import ArtistDetails from "../views/ArtistDetails.vue";
+import data from "../assets/shared/data.json";
 
 const routes = [
-    {
-        path: '/',
-        name: 'Home',
-        component: Home
+  {
+    path: "/",
+    name: "Home",
+    component: Home,
+  },
+  {
+    path: "/artist/:id",
+    name: "ArtistDetails",
+    component: ArtistDetails,
+    props: (route) => ({ ...route.params, id: parseInt(route.params.id) }),
+    beforeEnter(to, from) {
+      const exists = data.paintings.find(
+        (painting) => painting.id === parseInt(to.params.id)
+      );
+      if (!exists)
+        return (
+          {
+            name: "NotFound",
+            // allows keeping the URL while rendering a different page
+            params: { pathMatch: to.path.split("/").slice(1) },
+            query: to.query,
+            hash: to.hash,
+          },
+          {
+            path: "/:pathMatch(.*)*",
+            name: "NotFound",
+            component: () => import("../views/NotFound.vue"),
+          }
+        );
     },
-    {
-        path: '/artists/:id',
-        name: 'ArtistDetails',
-        component: ArtistDetails,
-        props: true
-    }
-]
+  },
+];
 
 const router = createRouter({
-    history: createWebHistory(),
-    routes,
-})
+  history: createWebHistory(),
+  routes,
+});
 
-export default router
+export default router;

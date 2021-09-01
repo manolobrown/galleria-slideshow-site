@@ -56,7 +56,9 @@
           <img src="../assets/shared/icon-back-button.svg" alt="" />
         </div>
         <div class="next">
-          <img src="../assets/shared/icon-next-button.svg" alt="" />
+          <router-link :to="`/artist/${(painting.id += 1)}`">
+            <img src="../assets/shared/icon-next-button.svg" alt="" />
+          </router-link>
         </div>
       </div>
     </div>
@@ -70,9 +72,9 @@
 </template>
 
 <script>
+import data from "../assets/shared/data.json";
 import BaseButton from "../components/BaseButton.vue";
 import Modal from "../components/Modal.vue";
-import Pagination from "../components/Pagination.vue";
 
 export default {
   name: "ArtistDetails",
@@ -80,23 +82,16 @@ export default {
     BaseButton,
     Modal,
   },
-  props: ["id"],
-  data() {
-    return {
-      painting: null,
-    };
-  },
-  methods: {
-    async fetchArtist() {
-      const res = await fetch(`http://localhost:5000/paintings/${this.id}`);
-
-      const data = await res.json();
-
-      return data;
+  props: {
+    id: {
+      type: Number,
+      required: true,
     },
   },
-  async created() {
-    this.painting = await this.fetchArtist();
+  computed: {
+    painting() {
+      return data.paintings.find((painting) => painting.id === this.id);
+    },
   },
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
   <BaseHeader />
-  <router-view></router-view>
+  <router-view :key="$route.fullPath"></router-view>
 </template>
 <script>
 //TODO Components Needed
