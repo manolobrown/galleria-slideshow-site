@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, useRoute } from "vue-router";
 import Home from "../views/Home.vue";
+import ArtistDetailsList from "../views/ArtistDetailsList.vue";
 import ArtistDetails from "../views/ArtistDetails.vue";
 import data from "../assets/shared/data.json";
 
@@ -8,6 +9,11 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
+  },
+  {
+    path: "/artists/:id",
+    name: "ArtistDetailsList",
+    component: ArtistDetailsList,
   },
   {
     path: "/artist/:id",

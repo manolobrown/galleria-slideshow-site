@@ -3,7 +3,7 @@
     <router-link :to="`/`">
       <img alt="Vue logo" src="../assets/shared/logo.svg" />
     </router-link>
-    <BaseButton txt="Start Slideshow" />
+    <BaseButton :txt="button" @click="startSlideShow()" />
   </header>
 </template>
 
@@ -14,6 +14,20 @@ export default {
   name: "BaseHeader",
   components: {
     BaseButton,
+  },
+  data() {
+    return {
+      button: "Start Slideshow",
+    };
+  },
+  methods: {
+    startSlideShow() {
+      this.$router.push({ name: "ArtistDetails", params: { id: 1 } });
+      this.button =
+        this.button === "Start Slideshow"
+          ? "Stop Slideshow"
+          : "Start Slideshow";
+    },
   },
 };
 </script>

@@ -1,21 +1,8 @@
 <template>
   <BaseHeader />
-  <router-view :key="$route.fullPath"></router-view>
+  <router-view></router-view>
 </template>
 <script>
-//TODO Components Needed
-//header - has logo and button
-//button - start slideshow | stop slideshow | go to source | view image | close
-//card - main page | detail page
-//card thumb - detail
-//title - titles + author
-//progress bar - detail page
-//slider controls - prev | next
-//modal
-
-//TODO Routes Needed
-//Detail Page
-
 import BaseHeader from "./components/BaseHeader.vue";
 
 export default {
