@@ -42,7 +42,11 @@
   </div>
   <footer class="footer" v-if="painting">
     <!-- progress bar -->
-    <div class="progress"></div>
+    <div
+      class="progress"
+      :data-id="$route.params.id"
+      v-bind:style="fullWidth"
+    ></div>
     <!-- pagination -->
     <div class="pagination">
       <!-- pagination header group -->
@@ -96,6 +100,7 @@ export default {
     return {
       isPrevActive: true,
       isNextActive: false,
+      width: this.id,
     };
   },
   props: {
@@ -108,6 +113,9 @@ export default {
     painting() {
       return data.paintings.find((painting) => painting.id === this.id);
     },
+    fullWidth() {
+      return `width:${this.width * 6.66666667}%`;
+    },
   },
   methods: {
     prev() {
@@ -116,6 +124,7 @@ export default {
           name: "ArtistDetails",
           params: { id: this.id - 1 },
         });
+        this.width = this.id - 1;
       }
     },
     next() {
@@ -124,6 +133,7 @@ export default {
           name: "ArtistDetails",
           params: { id: this.id + 1 },
         });
+        this.width = this.id + 1;
       }
     },
   },
@@ -234,10 +244,22 @@ p {
 }
 
 .progress {
-  background-color: #e5e5e5;
+  background-color: #000;
   height: rem(1);
   flex: 0 0 100%;
   margin-block-end: rem(10);
+}
+
+.progress:before {
+  content: "";
+  display: block;
+  height: rem(1);
+  width: 100%;
+  background-color: #e5e5e5;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: -1;
 }
 
 .pagination {
