@@ -1,9 +1,12 @@
 <template>
   <header>
-    <router-link :to="`/`">
+    <router-link :to="`/`" @click="$emit('reset-start-show')">
       <img alt="Vue logo" src="../assets/shared/logo.svg" />
     </router-link>
-    <BaseButton :txt="button" @click="startSlideShow()" />
+    <BaseButton
+      @btn-click="$emit('start-slide-show')"
+      :txt="startShow ? 'Stop Slideshow' : 'Start Slideshow'"
+    />
   </header>
 </template>
 
@@ -15,19 +18,8 @@ export default {
   components: {
     BaseButton,
   },
-  data() {
-    return {
-      button: "Start Slideshow",
-    };
-  },
-  methods: {
-    startSlideShow() {
-      this.$router.push({ name: "ArtistDetails", params: { id: 1 } });
-      this.button =
-        this.button === "Start Slideshow"
-          ? "Stop Slideshow"
-          : "Start Slideshow";
-    },
+  props: {
+    startShow: Boolean,
   },
 };
 </script>

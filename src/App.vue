@@ -1,6 +1,10 @@
 <template>
-  <BaseHeader />
-  <router-view></router-view>
+  <BaseHeader
+    @reset-start-show="reset"
+    @start-slide-show="toggleSlideShow"
+    :startShow="startShow"
+  />
+  <router-view :startShow="startShow"></router-view>
 </template>
 <script>
 import BaseHeader from "./components/BaseHeader.vue";
@@ -10,10 +14,24 @@ export default {
   components: {
     BaseHeader,
   },
-};
+  data() {
+    return {
+      startShow: false,
+    };
+  },
+  methods: {
+    toggleSlideShow() {
+      this.startShow = !this.startShow;
 
-// This starter template is using Vue 3 experimental <script setup> SFCs
-// Check out https://github.com/vuejs/rfcs/blob/master/active-rfcs/0040-script-setup.md
+      if (this.$route.path === "/") {
+        this.$router.push({ name: "ArtistDetails", params: { id: 1 } });
+      }
+    },
+    reset() {
+      this.startShow = false;
+    },
+  },
+};
 </script>
 
 <style lang="scss">

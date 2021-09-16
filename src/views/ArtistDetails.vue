@@ -42,11 +42,7 @@
   </div>
   <footer class="footer" v-if="painting">
     <!-- progress bar -->
-    <div
-      class="progress"
-      :data-id="$route.params.id"
-      v-bind:style="fullWidth"
-    ></div>
+    <div class="progress" :style="fullWidth"></div>
     <!-- pagination -->
     <div class="pagination">
       <!-- pagination header group -->
@@ -108,6 +104,15 @@ export default {
       type: Number,
       required: true,
     },
+    startShow: Boolean,
+  },
+  setup(props) {
+    if (props.startShow) {
+      // setInterval(alertFunc, 3000);
+      // function alertFunc() {
+      //   console.log("hello");
+      // }
+    }
   },
   computed: {
     painting() {
@@ -134,6 +139,15 @@ export default {
           params: { id: this.id + 1 },
         });
         this.width = this.id + 1;
+      }
+    },
+  },
+  watch: {
+    startShow() {
+      if (this.startShow) {
+        console.log("start show");
+      } else {
+        console.log("stop show");
       }
     },
   },

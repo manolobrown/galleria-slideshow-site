@@ -13,6 +13,9 @@ export default {
   components: {
     ArtistCards,
   },
+  props: {
+    startShow: Boolean,
+  },
   data() {
     return {
       paintings: data.paintings,
