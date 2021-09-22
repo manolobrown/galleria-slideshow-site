@@ -92,13 +92,6 @@ export default {
     Modal,
     Pagination,
   },
-  data() {
-    return {
-      isPrevActive: true,
-      isNextActive: false,
-      width: this.id,
-    };
-  },
   props: {
     id: {
       type: Number,
@@ -106,13 +99,15 @@ export default {
     },
     startShow: Boolean,
   },
-  setup(props) {
-    if (props.startShow) {
-      // setInterval(alertFunc, 3000);
-      // function alertFunc() {
-      //   console.log("hello");
-      // }
-    }
+  data() {
+    return {
+      width: this.id,
+    };
+  },
+  watch: {
+    startShow() {
+      this.startSlideShow();
+    },
   },
   computed: {
     painting() {
@@ -141,15 +136,17 @@ export default {
         this.width = this.id + 1;
       }
     },
-  },
-  watch: {
-    startShow() {
-      if (this.startShow) {
-        console.log("start show");
+    startSlideShow() {
+      let t;
+      if (this.startShow && !this.t) {
+        this.t = setInterval(this.next, 5000);
       } else {
-        console.log("stop show");
+        clearInterval(this.t);
       }
     },
+  },
+  mounted() {
+    this.startSlideShow();
   },
 };
 </script>
