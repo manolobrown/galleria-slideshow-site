@@ -50,16 +50,30 @@ header {
     left: 0;
     right: 0;
   }
+
+  button {
+    font-size: rem(9);
+  }
+  > a {
+    max-width: rem(117);
+  }
 }
 @media (min-width: rem(768)) {
   header {
     padding: rem(24) rem(40);
+    margin-block-end: rem(40);
+    button {
+      font-size: rem(12);
+    }
   }
 }
 @media (min-width: rem(1440)) {
   header {
     padding-left: 0;
     padding-right: 0;
+    > a {
+      max-width: rem(170);
+    }
   }
 }
 </style>

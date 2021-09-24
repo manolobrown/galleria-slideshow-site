@@ -35,11 +35,16 @@ export default {
   position: relative;
   margin-bottom: rem(24);
   cursor: pointer;
+  transition: opacity 0.2s ease;
   img {
     display: block;
     margin: 0 auto;
     object-fit: cover;
     width: 100%;
+  }
+
+  &:hover {
+    opacity: 0.5;
   }
 }
 .heading-group {
